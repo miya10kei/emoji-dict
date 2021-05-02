@@ -1,0 +1,42 @@
+buildscript {
+  ext {
+    versions = [
+      java               : "11",
+      kotlinSerialization: "1.1.0"
+    ]
+  }
+}
+
+plugins {
+  id 'application'
+  id 'org.jetbrains.kotlin.jvm' version '1.4.32'
+  id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.32'
+}
+
+group = 'com.miya10kei.emoji'
+version = '1.0.0-SNAPSHOT'
+java.sourceCompatibility = JavaVersion.VERSION_11
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinSerialization"
+}
+
+test {
+  useJUnitPlatform()
+}
+
+compileKotlin {
+  kotlinOptions.jvmTarget = versions.java
+}
+
+compileTestKotlin {
+  kotlinOptions.jvmTarget = versions.java
+}
+
+application {
+  mainClassName = "com.miya10kei.emoji.MainKt"
+}
